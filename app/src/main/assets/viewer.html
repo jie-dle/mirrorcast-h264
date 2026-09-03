@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>镜像投屏</title>
+<style>
+  html,body{margin:0;padding:0;background:#000;height:100%;overflow:hidden}
+  #wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%}
+  #view{max-width:100%;max-height:92vh;background:#000}
+  .flipped{transform:scaleX(-1)}
+  #bar{position:fixed;top:0;left:0;right:0;display:flex;gap:8px;padding:8px;background:rgba(0,0,0,.55);z-index:10}
+  button{font-size:14px;padding:6px 14px;border-radius:6px;border:1px solid #888;background:#222;color:#eee;cursor:pointer}
+  #status{position:fixed;bottom:8px;left:0;right:0;text-align:center;color:#aaa;font-size:12px;z-index:10}
+</style>
+</head>
+<body>
+<div id="bar">
+  <button id="btnFlip">镜像：开</button>
+  <button id="btnFit">缩放：适应</button>
+  <button id="btnFull">全屏</button>
+</div>
+<div id="wrap"><img id="view" src="/stream" alt="推流画面"></div>
+<div id="status">连接中…</div>
+<script>
+  var img = document.getElementById('view');
+  var st = document.getElementById('status');
+  var btnFlip = document.getElementById('btnFlip');
+  var btnFit = document.getElementById('btnFit');
+  var btnFull = document.getElementById('btnFull');
+  var flipped = false;
+  var fitContain = true;
+
+  function setFlip(v) {
+    flipped = v;
+    img.classList.toggle('flipped', v);
+    // 按钮文字反映画面当前状态：初始画面即镜像（手机端已翻转），故显示"开"
+    btnFlip.textContent = '镜像：' + (v ? '关' : '开');
+  }
+  function setFit(v) {
+    fitContain = v;
+    if (v) { img.style.width=''; img.style.height=''; img.style.objectFit=''; }
+    else { img.style.width='100%'; img.style.height='100%'; img.style.objectFit='cover'; }
+    btnFit.textContent = '缩放：' + (v ? '适应' : '铺满');
+  }
+  btnFlip.onclick = function () { setFlip(!flipped); };
+  btnFit.onclick = function () { setFit(!fitContain); };
+  btnFull.onclick = function () {
+    if (document.fullscreenElement) { document.exitFullscreen(); }
+    else { document.documentElement.requestFullscreen(); }
+  };
+
+  img.onload = function () { st.textContent = '已连接'; };
+  img.onerror = function () {
+    st.textContent = '连接断开，正在重连…';
+    setTimeout(function () { img.src = '/stream?t=' + Date.now(); }, 1000);
+  };
+</script>
+</body>
+</html>

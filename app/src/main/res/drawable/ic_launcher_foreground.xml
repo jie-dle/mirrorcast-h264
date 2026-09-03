@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- 屏幕 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M30,36 h48 a6,6 0 0 1 6,6 v24 a6,6 0 0 1 -6,6 h-48 a6,6 0 0 1 -6,-6 v-24 a6,6 0 0 1 6,-6 z" />
+    <!-- 镜头 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,48 m-6,0 a6,6 0 1 1 12,0 a6,6 0 1 1 -12,0" />
+    <!-- 左箭头（镜像示意） -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M24,54 l-8,-5 v10 z" />
+    <!-- 右箭头（镜像示意） -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M84,54 l8,-5 v10 z" />
+</vector>

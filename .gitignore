@@ -1,0 +1,25 @@
+# Android 构建产物
+build/
+app/build/
+
+# 本机缓存与配置
+.gradle/
+.kotlin/
+.idea/
+local.properties
+captures/
+
+# JVM 崩溃日志
+hs_err_pid*.log
+replay_pid*.log
+
+# 个人工作日志（不上传）
+项目记录-V0.3.md
+
+# 签名文件（将来做正式签名后也绝不能上传）
+*.jks
+*.keystore
+
+# 系统杂项
+.DS_Store
+Thumbs.db
