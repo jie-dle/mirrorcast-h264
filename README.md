@@ -15,6 +15,12 @@
 | 原理 | H.264 硬编硬解 + TCP 双通道 | MJPEG over HTTP |
 | 适合 | 双安卓机之间追求流畅低延迟 | 给电脑/随便什么设备看，最省事 |
 
+## 界面预览
+
+| 主界面 · 发送端（分辨率 / 帧率可调） | 主界面 · 接收端（填 IP / 点选自动发现） | 接收端观看（硬解直出） |
+|:---:|:---:|:---:|
+| <img src="screenshots/screenshot-sender.jpg" width="250" alt="发送端主界面"> | <img src="screenshots/screenshot-receiver.jpg" width="250" alt="接收端主界面"> | <img src="screenshots/screenshot-viewing.jpg" width="250" alt="接收端观看"> |
+
 ## 软件介绍
 
 单 APK 双角色：同一个安装包，打开后选「发送端」或「接收端」。角色与对端 IP 会持久记忆，**配好一次，之后打开即用**。
